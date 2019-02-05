@@ -36,10 +36,10 @@ def write_to_file(dataframe,filename,times):
         append_write = 'a'  # append if already exists
     else:
         append_write = 'w'  # make a new file if not
-    print(append_write)
+    #print(append_write)
     highscore = csv.writer(open(filename, append_write))
     for key,val in dataframe.items():
-        highscore.writerow([key,val,times])
+        highscore.writerow([times,key,val])
 
 
 
@@ -49,14 +49,15 @@ if __name__ == "__main__":
  region = list(range(1,33))
 # generate 16 float readings for each of the object between 0 and 1
  sensor_readings = generate_list(region)
- print(region)
+ #print(region)
  # generate dictionary to combine the two lists with region objects being the key and sensor readings as the values
  sensor_data = dict(zip(region, sensor_readings))
- print(sensor_data)
+ #print(sensor_data)
  # time stamp
  now = datetime.now()
- print("timestamp =", now)
+ #print("timestamp =", now)
  write_to_file(sensor_data,inputfile,now)
+ print("write to file done")
 
 
 
